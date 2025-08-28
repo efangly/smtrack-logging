@@ -143,7 +143,7 @@ export class MqttSubscriberService implements OnModuleInit, OnModuleDestroy {
   private async handleMessage(topic: string, payload: Buffer): Promise<void> {
     try {
       const messageStr = payload.toString();
-      this.logger.debug(`Received message from ${topic}: ${messageStr}`);
+      // this.logger.debug(`Received message from ${topic}: ${messageStr}`);
 
       // Try to parse as JSON, fallback to plain text
       let message: IoTMessage;
@@ -160,7 +160,7 @@ export class MqttSubscriberService implements OnModuleInit, OnModuleDestroy {
       const logEntry = this.convertToLogEntry(message);
       await this.lokiService.pushLog(logEntry);
 
-      this.logger.debug(`Processed message from device ${message.deviceId}`);
+      // this.logger.debug(`Processed message from device ${message.deviceId}`);
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : 'Unknown error';

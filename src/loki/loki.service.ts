@@ -41,9 +41,7 @@ export class LokiService implements OnModuleDestroy {
     // Add request/response interceptors for better error handling
     client.interceptors.request.use(
       (config) => {
-        this.logger.debug(
-          `Sending request to Loki: ${config.method?.toUpperCase()} ${config.url}`,
-        );
+        // this.logger.debug(`Sending request to Loki: ${config.method?.toUpperCase()} ${config.url}`);
         return config;
       },
       (error) => {
@@ -56,9 +54,7 @@ export class LokiService implements OnModuleDestroy {
 
     client.interceptors.response.use(
       (response) => {
-        this.logger.debug(
-          `Loki response: ${response.status} ${response.statusText}`,
-        );
+        // this.logger.debug(`Loki response: ${response.status} ${response.statusText}`);
         return response;
       },
       (error: AxiosError) => {
